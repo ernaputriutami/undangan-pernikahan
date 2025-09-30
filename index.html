@@ -28,7 +28,8 @@
         /* Gaya Khusus untuk Bagian Utama */
         .header-section {
             padding: 60px 20px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/cover.jpg') no-repeat center center;
+            /* PATH GAMBAR DISESUAIKAN: Ganti 'aset/cover.jpg' jika lokasi file Anda berbeda */
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('aset/cover.jpg') no-repeat center center;
             background-size: cover;
             color: white;
             min-height: 100vh; /* Agar tampilan awal penuh layar */
@@ -38,7 +39,7 @@
             align-items: center;
         }
         
-        /* Gaya untuk Nama Tamu di Header (BARU) */
+        /* Gaya untuk Nama Tamu di Header */
         .guest-invitation {
             font-size: 1.2rem;
             font-weight: 400;
@@ -46,7 +47,7 @@
             margin-bottom: 30px; /* Jarak sebelum tombol */
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
             padding: 10px 20px;
-            border: 1px solid rgba(255, 255, 255, 0.5); /* Garis tepi sederhana agar lebih menonjol */
+            border: 1px solid rgba(255, 255, 255, 0.5); 
             display: inline-block;
             background-color: rgba(0,0,0,0.2);
             border-radius: 5px;
@@ -56,12 +57,11 @@
         .guest-name-text {
             font-weight: 700;
         }
-        /* End Gaya untuk Nama Tamu */
 
 
         .couple-names {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 4.5rem; /* Ukuran font besar untuk nama */
+            font-size: 4.5rem; 
             font-weight: 700;
             margin: 10px 0;
             letter-spacing: 2px;
@@ -90,7 +90,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: #8B4513; /* Warna cokelat lembut */
+            color: #8B4513;
             font-style: italic;
         }
 
@@ -121,7 +121,7 @@
         /* Gaya untuk Send The Love Section */
         .send-the-love-section {
             padding: 50px 20px;
-            background-color: #1a233e; /* Warna biru gelap dari gambar */
+            background-color: #1a233e;
             color: white;
         }
 
@@ -163,8 +163,6 @@
         .copy-button:hover {
             background-color: #ddd;
         }
-        /* End Gaya untuk Send The Love Section */
-
 
         /* Responsive Design Sederhana */
         @media (max-width: 600px) {
@@ -186,8 +184,24 @@
     </style>
 </head>
 <body>
+    
+    <audio id="myAudio" loop>
+        <source src="aset/Bernaung (From Setetes Embun Cinta Niyala).mp3" type="audio/mp3">
+        Browser Anda tidak mendukung elemen audio.
+    </audio>
+    
     <script>
-        // FUNGSI BARU UNTUK MENGAMBIL NAMA DARI URL
+        // FUNGSI UNTUK MEMUTAR MUSIK
+        function playAudio() {
+            const audio = document.getElementById('myAudio');
+            if (audio) {
+                audio.play().catch(error => {
+                    console.error("Gagal memutar audio:", error);
+                });
+            }
+        }
+        
+        // FUNGSI UNTUK MENGAMBIL NAMA DARI URL
         function getGuestNameFromURL() {
             const urlParams = new URLSearchParams(window.location.search);
             let name = urlParams.get('to'); // Mengambil nilai dari parameter '?to='
@@ -229,7 +243,8 @@
         <p class="guest-invitation">
             To: <span id="guest-name-placeholder" class="guest-name-text">Sedang Memuat Nama...</span>
         </p>
-        <a href="#main-content" class="button-style">Buka Undangan</a>
+        
+        <a href="#main-content" class="button-style" onclick="playAudio()">Buka Undangan</a>
     </section>
 
     <section class="verse-section" id="main-content">
@@ -277,7 +292,7 @@
             <div class="love-card">
                 <p class="bank-name">BNI</p>
                 <div class="account-info">
-                    <p>No. Rek : <span id="bni-number">***</span></p>
+                    <p>No. Rek : <span id="bni-number">***NOMOR BNI***</span></p>
                     <p>a/n : **Erna**</p>
                 </div>
                 <button class="copy-button" onclick="copyText('***')">Copy</button> 
@@ -286,7 +301,7 @@
             <div class="love-card">
                 <p class="bank-name">BRI</p>
                 <div class="account-info">
-                    <p>No. Rek : <span id="bri-number">***</span></p>
+                    <p>No. Rek : <span id="bri-number">***NOMOR BRI***</span></p>
                     <p>a/n : **Reza**</p>
                 </div>
                 <button class="copy-button" onclick="copyText('***')">Copy</button> 
@@ -295,7 +310,6 @@
             <p style="font-size: 0.8rem; margin-top: 30px;">Terima kasih atas segala doa dan dukungan Anda.</p>
         </div>
     </section>
-
     <footer style="padding: 40px 20px; background-color: #333; color: white;">
         <div class="container">
             <h2 style="font-family: 'Cormorant Garamond', serif; color: white;">Konfirmasi Kehadiran</h2>
