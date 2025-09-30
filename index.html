@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Pernikahan Erna & Reza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #fdfbfb; /* putih lembut */
+      color: #333;
+      text-align: center;
+      scroll-behavior: smooth;
+    }
+    header {
+      padding: 80px 20px;
+      background: linear-gradient(rgba(120,170,255,0.6), rgba(255,180,200,0.6)), 
+                  url('https://source.unsplash.com/1600x900/?wedding,flowers') no-repeat center center;
+      background-size: cover;
+      color: white;
+      position: relative;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      top:0; left:0; right:0; bottom:0;
+      background: rgba(0,0,0,0.25);
+    }
+    header h1, header p {
+      position: relative;
+      z-index: 1;
+    }
+    header h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 58px;
+      margin: 0;
+    }
+    header p {
+      font-size: 22px;
+    }
+    section {
+      padding: 60px 20px;
+    }
+    .countdown {
+      font-size: 28px;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #5b8dd4; /* soft blue */
+    }
+    .couple img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      border: 4px solid #f4b6c2; /* soft pink border */
+    }
+    .couple img:hover {
+      transform: scale(1.05);
+    }
+    .details {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.8;
+      background: #f0f6ff; /* biru muda */
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .rsvp input, .rsvp select, .rsvp button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    .rsvp button {
+      background: #f4b6c2; /* soft pink */
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .rsvp button:hover {
+      background: #d48da3; /* pink lebih gelap */
+    }
+    footer {
+      padding: 20px;
+      font-size: 14px;
+      color: #555;
+      background: #e3f2fd; /* biru muda lembut */
+      margin-top: 40px;
+    }
+    /* Animasi Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Musik control */
+    #music-control {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #5b8dd4; /* soft blue */
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    #music-control:hover {
+      background: #3c6bb3; /* biru lebih gelap */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Erna & Reza</h1>
+    <p>Undangan Pernikahan Kami</p>
+    <div class="countdown" id="countdown"></div>
+  </header>
+
+  <section class="couple fade-in">
+    <h2>Pasangan Bahagia</h2>
+    <div>
+      <img src="https://source.unsplash.com/150x150/?woman" alt="Erna">
+      <h3>Erna Putri Utami</h3>
+    </div>
+    <div>
+      <img src="https://source.unsplash.com/150x150/?man" alt="Reza">
+      <h3>Reza Fauzi</h3>
+    </div>
+  </section>
+
+  <section class="details fade-in">
+    <h2>Detail Acara</h2>
+    <p>📅 Tanggal: 21 Desember 2025</p>
+    <p>🕒 Waktu: 09:00 WIB - selesai</p>
+    <p>📍 Lokasi: Gedung Widaria Kencana Sukabumi, Jl. Lkr. Sel., Sukakarya, Kec. Warudoyong, Kota Sukabumi, Jawa Barat 43135</p>
+  </section>
+
+  <section class="gallery fade-in">
+    <h2>Galeri Prewedding</h2>
+    <img src="https://source.unsplash.com/500x600/?couple,wedding" alt="Foto 1">
+    <img src="https://source.unsplash.com/500x600/?love,romantic" alt="Foto 2">
+    <img src="https://source.unsplash.com/500x600/?wedding,ring" alt="Foto 3">
+    <img src="https://source.unsplash.com/500x600/?bride,groom" alt="Foto 4">
+  </section>
+
+  <section class="rsvp fade-in">
+    <h2>Konfirmasi Kehadiran</h2>
+    <input type="text" placeholder="Nama Anda" id="name">
+    <select id="attendance">
+      <option value="">Pilih Kehadiran</option>
+      <option value="Hadir">Hadir</option>
+      <option value="Tidak Hadir">Tidak Hadir</option>
+    </select>
+    <button onclick="submitRSVP()">Kirim</button>
+    <p id="thankyou" style="color:green; display:none;">Terima kasih atas konfirmasinya!</p>
+  </section>
+
+  <footer>
+    &copy; 2025 Erna & Reza. All rights reserved.
+  </footer>
+
+  <!-- Musik -->
+  <audio id="bg-music" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-control">🎵</button>
+
+  <script>
+    // Countdown Timer
+    const eventDate = new Date("Dec 21, 2025 09:00:00").getTime();
+    const countdownEl = document.getElementById("countdown");
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdownEl.innerHTML = `${days} Hari ${hours} Jam ${minutes} Menit ${seconds} Detik`;
+    }, 1000);
+
+    // RSVP
+    function submitRSVP() {
+      const name = document.getElementById('name').value;
+      const attendance = document.getElementById('attendance').value;
+      if(name && attendance) {
+        document.getElementById('thankyou').style.display = 'block';
+        console.log(`RSVP dari ${name}: ${attendance}`);
+      } else {
+        alert('Silakan isi nama dan pilih kehadiran.');
+      }
+    }
+
+    // Animasi Fade-in saat scroll
+    const faders = document.querySelectorAll('.fade-in');
+    window.addEventListener('scroll', () => {
+      faders.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 50) {
+          el.classList.add('show');
+        }
+      });
+    });
+
+    // Musik Control
+    const music = document.getElementById("bg-music");
+    const musicBtn = document.getElementById("music-control");
+    let isPlaying = false;
+    musicBtn.addEventListener("click", () => {
+      if(isPlaying) {
+        music.pause();
+        musicBtn.textContent = "🎵";
+      } else {
+        music.play();
+        musicBtn.textContent = "⏸️";
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+</body>
+</html>
