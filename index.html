@@ -37,6 +37,27 @@
             justify-content: center;
             align-items: center;
         }
+        
+        /* Gaya untuk Nama Tamu di Header (BARU) */
+        .guest-invitation {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-top: 15px;
+            margin-bottom: 30px; /* Jarak sebelum tombol */
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.5); /* Garis tepi sederhana agar lebih menonjol */
+            display: inline-block;
+            background-color: rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+        
+        /* CSS Tambahan untuk Nama Tamu yang tebal */
+        .guest-name-text {
+            font-weight: 700;
+        }
+        /* End Gaya untuk Nama Tamu */
+
 
         .couple-names {
             font-family: 'Cormorant Garamond', serif;
@@ -97,6 +118,54 @@
             background-color: #A0522D;
         }
 
+        /* Gaya untuk Send The Love Section */
+        .send-the-love-section {
+            padding: 50px 20px;
+            background-color: #1a233e; /* Warna biru gelap dari gambar */
+            color: white;
+        }
+
+        .love-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .bank-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .account-info {
+            font-size: 1.1rem;
+            font-weight: 300;
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .copy-button {
+            background-color: white;
+            color: #1a233e;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: background-color 0.3s;
+        }
+
+        .copy-button:hover {
+            background-color: #ddd;
+        }
+        /* End Gaya untuk Send The Love Section */
+
+
         /* Responsive Design Sederhana */
         @media (max-width: 600px) {
             .couple-names {
@@ -108,11 +177,46 @@
             .header-section {
                 padding: 40px 10px;
             }
+            .guest-invitation {
+                font-size: 1rem;
+                margin-top: 10px;
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
+    <script>
+        // FUNGSI BARU UNTUK MENGAMBIL NAMA DARI URL
+        function getGuestNameFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            let name = urlParams.get('to'); // Mengambil nilai dari parameter '?to='
 
+            // Jika ada nama di URL
+            if (name) {
+                // Mengganti %20 atau + dengan spasi biasa dan decode karakter khusus
+                name = decodeURIComponent(name.replace(/\+/g, ' '));
+                // Tampilkan nama di placeholder
+                document.getElementById('guest-name-placeholder').textContent = name;
+            } else {
+                // Jika tidak ada parameter 'to', tampilkan nama default
+                document.getElementById('guest-name-placeholder').textContent = "Rekan dan Kerabat Kami";
+            }
+        }
+
+        // Fungsi untuk menyalin teks ke clipboard
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Nomor berhasil disalin: " + text);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+        
+        // Jalankan fungsi saat halaman selesai dimuat
+        window.onload = getGuestNameFromURL;
+    </script>
+    
     <section class="header-section">
         <p style="font-size: 1.5rem; margin-bottom: 0;">The Wedding of</p>
         <h1 class="couple-names">
@@ -122,6 +226,9 @@
         </h1>
         <p class="date-text">Minggu, 21 Desember 2025</p>
 
+        <p class="guest-invitation">
+            To: <span id="guest-name-placeholder" class="guest-name-text">Sedang Memuat Nama...</span>
+        </p>
         <a href="#main-content" class="button-style">Buka Undangan</a>
     </section>
 
@@ -155,6 +262,37 @@
             </p>
 
             <a href="https://share.google/E5lgyg1BFO6jqj4jd" target="_blank" class="button-style" style="background-color: #333; margin-top: 20px;">Lihat Lokasi di Peta</a>
+            
+            <a href="#send-the-love" class="button-style" style="margin-left: 10px; margin-top: 20px;">Kirim Kado Online</a>
+        </div>
+    </section>
+    
+    <section class="send-the-love-section" id="send-the-love">
+        <div class="container">
+            <h2 style="font-family: 'Cormorant Garamond', serif; color: white; margin-bottom: 0;">Send The Love</h2>
+            <p style="font-size: 0.9rem; max-width: 600px; margin: 10px auto 30px auto; font-weight: 300;">
+                Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih untuk mempelai dapat melalui e-wallet berikut :
+            </p>
+            
+            <div class="love-card">
+                <p class="bank-name">BNI</p>
+                <div class="account-info">
+                    <p>No. Rek : <span id="bni-number">***</span></p>
+                    <p>a/n : **Erna**</p>
+                </div>
+                <button class="copy-button" onclick="copyText('***')">Copy</button> 
+            </div>
+            
+            <div class="love-card">
+                <p class="bank-name">BRI</p>
+                <div class="account-info">
+                    <p>No. Rek : <span id="bri-number">***</span></p>
+                    <p>a/n : **Reza**</p>
+                </div>
+                <button class="copy-button" onclick="copyText('***')">Copy</button> 
+            </div>
+            
+            <p style="font-size: 0.8rem; margin-top: 30px;">Terima kasih atas segala doa dan dukungan Anda.</p>
         </div>
     </section>
 
@@ -162,7 +300,7 @@
         <div class="container">
             <h2 style="font-family: 'Cormorant Garamond', serif; color: white;">Konfirmasi Kehadiran</h2>
             <p>
-                Untuk fitur RSVP, Anda perlu menanamkan kode dari layanan eksternal (misalnya Google Forms, Tally, atau Typeform).
+                Mohon konfirmasi kehadiran Anda melalui tombol di bawah ini.
             </p>
             <a href="https://forms.gle/kaYT2mbiunKWXFJu9" target="_blank" class="button-style" style="background-color: #A0522D;">Konfirmasi Kehadiran (RSVP)</a>
         </div>
